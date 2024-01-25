@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {ChangeEvent, useState} from 'react';
 
 export const HW3 = () => {
   // 1️⃣ Раскомментируйте JSX(HW3.tsx) и вы увидите,
@@ -15,9 +15,8 @@ export const HW3 = () => {
     'То, что вы делаете по ночам, то и делает вас богатым. (Аль Капоне)',
   ]);
 
-  const handleChange = (event: string) => {
-    setCurrentText(event);
-      console.log(event)
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setCurrentText(event.currentTarget.value);
   };
 
   const handleSave = () => {
@@ -35,7 +34,7 @@ export const HW3 = () => {
         <h1 id={'hw03-default-text'}>Здесь появится новое дело</h1> // ничего не меняем, здесь все норм
       )}
 
-      <input id={'hw03-input'} type="text" value={currentText} onChange={(event) => handleChange(event.currentTarget.value)} />
+      <input id={'hw03-input'} type="text" value={currentText} onChange={handleChange} />
 
       <button id={'hw03-button'} onClick={handleSave}>
         Сохранить
